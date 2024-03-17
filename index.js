@@ -7,7 +7,7 @@ function write(shape) {
 }
 
 const test = `<svg>
-			<circle cx="150" cy="100" r="80" x="0" y="0" width="300" height="200" ${`fill=${`'#000'`}`}/>
+			<circle cx="150" cy="100" r="80" x="0" y="0" width="300" height="200" fill=${setShapeColor}/>
 		</svg>`;
 
-write(test);
+// write(test);
