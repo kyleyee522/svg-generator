@@ -1,6 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-// CHANGE IT SO THAT THE CLASSES HAVE A FUNCTION THAT RENDERS THE WHOLE STRING BUT CHECK FOR TESTS
+const Square = require('./lib/Square.js');
+const Triangle = require('./lib/Triangle.js');
+const Circle = require('./lib/Circle.js');
+
 inquirer
 	.prompt([
 		{
@@ -28,14 +31,19 @@ inquirer
 	.then((data) => {
 		let shape;
 		if (data.shape === 'circle') {
-			shape = `<svg width="300" height="200"><circle cx="150" cy="100" r="80" x="0" y="0" width="300" height="200" fill="${data.shapeColor}"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="60" fill="${data.textColor}">${data.text}</text></svg>`;
+			shape = new Circle(data.text, data.textColor, data.shapeColor);
+			shape = shape.renderString();
+			console.log(shape);
 		}
 		if (data.shape === 'square') {
-			shape = `<svg width="300" height="200"><rect x="25%" y="25px" width="150" height="150" fill="${data.shapeColor}"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="60" fill="${data.textColor}">${data.text}</text></svg>`;
+			shape = new Square(data.text, data.textColor, data.shapeColor);
+			shape = shape.renderString();
+			console.log(shape);
 		}
 		if (data.shape === 'triangle') {
-			shape = `<svg width="300" height="200"><polygon
-				points="150, 18 244, 182 56, 182" x="0" y="0" width="300" height="200" fill="${data.shapeColor}"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="60" fill="${data.textColor}">${data.text}</text></svg>`;
+			shape = new Triangle(data.text, data.textColor, data.shapeColor);
+			shape = shape.renderString();
+			console.log(shape);
 		}
 
 		fs.writeFile('./examples/example.svg', shape, (err) => {
