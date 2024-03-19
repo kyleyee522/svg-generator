@@ -33,17 +33,14 @@ inquirer
 		if (data.shape === 'circle') {
 			shape = new Circle(data.text, data.textColor, data.shapeColor);
 			shape = shape.renderString();
-			console.log(shape);
 		}
 		if (data.shape === 'square') {
 			shape = new Square(data.text, data.textColor, data.shapeColor);
 			shape = shape.renderString();
-			console.log(shape);
 		}
 		if (data.shape === 'triangle') {
 			shape = new Triangle(data.text, data.textColor, data.shapeColor);
 			shape = shape.renderString();
-			console.log(shape);
 		}
 
 		fs.writeFile('./examples/example.svg', shape, (err) => {
