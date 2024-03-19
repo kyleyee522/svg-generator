@@ -43,7 +43,7 @@ inquirer
 			shape = shape.renderString();
 		}
 
-		fs.writeFile('./examples/example.svg', shape, (err) => {
+		fs.writeFile('./examples/logo.svg', shape, (err) => {
 			err ? console.error(err) : console.log('SVG created!');
 		});
 	});
